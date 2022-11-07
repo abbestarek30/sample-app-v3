@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf tempdir/
 mkdir tempdir
 mkdir tempdir/templates
 mkdir tempdir/static
@@ -7,6 +8,11 @@ mkdir tempdir/static
 cp sample_app.py tempdir/.
 cp -r templates/* tempdir/templates/.
 cp -r static/* tempdir/static/.
+
+
+docker container rm samplerunning
+
+rm -rf tempdir/Dockerfile
 
 echo "FROM python" >> tempdir/Dockerfile
 echo "RUN pip install flask" >> tempdir/Dockerfile
